@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="icon"
+    aria-label="Example icon-button with menu icon"
+    type="button"
+    mat-button
+    (click)="drawer.toggle()"
+  >
+    <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
+    <mat-icon *ngIf="drawer.opened">close</mat-icon>
+  </button>
+  <span>Nasa App</span>
+</mat-toolbar>

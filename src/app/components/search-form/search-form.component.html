@@ -1,0 +1,41 @@
+<form [formGroup]="searchForm" class="w-100 p-1">
+  <mat-form-field appearance="outline">
+    <mat-label>Rover</mat-label>
+    <mat-select
+      id="rover"
+      name="rover"
+      formControlName="rover"
+      (valueChange)="setMaxSol($event)"
+    >
+      <mat-option *ngFor="let rover of rovers" [value]="rover.name">{{
+        rover.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Sol</mat-label>
+    <input
+      matInput
+      type="number"
+      formControlName="sol"
+      placeholder="Sol"
+      min="0"
+      max="1000"
+      id="sol"
+      name="sol"
+      formControlName="sol"
+    />
+    <mat-hint>from 0 to {{ max_sol }}</mat-hint>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!searchForm.valid"
+    (click)="onSubmit()"
+  >
+    <app-spinner *ngIf="loading"></app-spinner>
+    <mat-icon *ngIf="!loading">search</mat-icon>
+  </button>
+  <br />
+</form>

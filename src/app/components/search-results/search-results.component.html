@@ -1,0 +1,14 @@
+<p class="w-100 text-center" *ngIf="!photos.length">No Items to show</p>
+<mat-grid-list [cols]="cols">
+  <mat-grid-tile *ngFor="let photo of filteredPhotos">
+    <img [src]="photo.img_src" alt="Loading" class="w-100" />
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-paginator
+  *ngIf="photos.length"
+  [length]="photos.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>
