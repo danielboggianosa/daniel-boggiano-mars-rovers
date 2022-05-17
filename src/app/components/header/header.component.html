@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="drawer" class="toolbar">
   <button
     mat-icon-button
     class="icon"
@@ -10,5 +10,5 @@
     <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
     <mat-icon *ngIf="drawer.opened">close</mat-icon>
   </button>
-  <span>Nasa App</span>
+  <span>{{title}}</span>
 </mat-toolbar>

@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NasaService } from 'src/app/core/services/nasa.service';
 
 import { SearchFormComponent } from './search-form.component';
 
@@ -8,9 +10,11 @@ describe('SearchFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchFormComponent ]
+      imports: [HttpClientModule],
+      providers: [NasaService],
+      declarations: [SearchFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

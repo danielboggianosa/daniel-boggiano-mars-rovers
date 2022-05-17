@@ -9,7 +9,6 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { MaterialModule } from './material/material.module';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -23,7 +22,6 @@ import { NasaInterceptorService } from './core/interceptors/nasa-interceptor.ser
     LayoutComponent,
     SearchFormComponent,
     NavMenuComponent,
-    FooterComponent,
     SearchResultsComponent,
     SearchPageComponent,
     HeaderComponent,
