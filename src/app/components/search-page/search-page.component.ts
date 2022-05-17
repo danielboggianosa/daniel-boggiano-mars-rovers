@@ -14,7 +14,7 @@ export class SearchPageComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  showPhotos(photos: Photo[]) {
+  showPhotos(photos: Photo[]): void {
     this.photos = photos;
   }
 

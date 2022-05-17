@@ -14,8 +14,7 @@ export class NasaService {
   constructor(private http: HttpClient) { }
 
   getRovers(): Observable<any> {
-    let params = new HttpParams();
-    return this.http.get(`${this.API_URL}`, { params });
+    return this.http.get(`${this.API_URL}`);
   }
 
   getRoverPhotos(rover: string, sol: number): Promise<Photo[]> {

@@ -13,16 +13,16 @@ export class SearchFormComponent implements OnInit {
   searchForm: FormGroup;
   rovers: Rover[] = [];
   cameras: string[] = ['FHAZ', 'RHAZ', 'MAST', 'CHEMCAM', 'MAHLI', 'MARDI', 'NAVCAM', 'PANCAM', 'MINITES', 'ENTRY'];
-  max_sol: number = 1000;
-  loading: boolean = false;
-  @Output() photos: EventEmitter<Photo[]> = new EventEmitter()
+  maxSol = 1000;
+  loading = false;
+  @Output() photos: EventEmitter<Photo[]> = new EventEmitter();
 
   constructor(private nasaService: NasaService) { }
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
       rover: new FormControl('', [Validators.required]),
-      sol: new FormControl(this.max_sol, [Validators.required, Validators.min(0), Validators.max(this.max_sol)]),
+      sol: new FormControl(this.maxSol, [Validators.required, Validators.min(0), Validators.max(this.maxSol)]),
     });
     if (this.rovers.length === 0) {
       this.nasaService.getRovers().subscribe(
@@ -36,29 +36,29 @@ export class SearchFormComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.loading = true;
     if (this.searchForm.valid) {
       const rover = this.searchForm.get('rover').value;
       const sol = this.searchForm.get('sol').value;
       this.nasaService.getRoverPhotos(rover, sol).then((photos) => {
-        this.photos.emit(photos)
+        this.photos.emit(photos);
       }).catch(console.error)
         .finally(() => {
           this.loading = false;
-        })
+        });
     }
   }
 
   setMaxSol(roverName): void {
-    const rover = this.rovers.find(rover => rover.name === roverName);
+    const rover = this.rovers.find(({ name }) => name === roverName);
     if (rover.max_sol < 1000) {
       this.searchForm.setValue({
         rover: roverName,
         sol: rover.max_sol,
-      })
+      });
     }
-    this.max_sol = rover.max_sol;
+    this.maxSol = rover.max_sol;
   }
 
 }

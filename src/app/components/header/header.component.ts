@@ -8,7 +8,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 })
 export class HeaderComponent implements OnInit {
   title = 'NASA APP';
-  @Input() drawer: MatDrawer
+  @Input() drawer: MatDrawer;
   constructor() { }
 
   ngOnInit(): void { }

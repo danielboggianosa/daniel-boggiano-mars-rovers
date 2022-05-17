@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./spinner.component.css']
 })
 export class SpinnerComponent implements OnInit {
-  dots = Array(8)
+  dots = Array(8);
 
   constructor() { }
 

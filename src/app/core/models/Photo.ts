@@ -1,5 +1,5 @@
-import { Camera } from "./Camera";
-import { Rover } from "./Rover";
+import { Camera } from './Camera';
+import { Rover } from './Rover';
 
 export interface Photo {
   camera: Camera;

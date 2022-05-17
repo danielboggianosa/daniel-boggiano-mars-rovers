@@ -9,10 +9,10 @@ import { Photo } from 'src/app/core/models/Photo';
 export class SearchResultsComponent implements OnInit, OnChanges {
   @Input() photos: Photo[] = [];
   filteredPhotos: Photo[] = [];
-  page: number = 1;
-  pageSize: number = 10;
+  page = 1;
+  pageSize = 10;
   pageSizeOptions: number[] = [10, 20, 50, 100];
-  cols: number = 5;
+  cols = 5;
 
   constructor() { }
 
@@ -25,7 +25,7 @@ export class SearchResultsComponent implements OnInit, OnChanges {
     this.filteredPhotos = this.photos.length > 0 ? this.photos.slice(0, this.pageSize) : [];
   }
 
-  onPageChange(event) {
+  onPageChange(event): void {
     this.filteredPhotos = this.photos.slice(event.pageIndex * event.pageSize, (event.pageIndex + 1) * event.pageSize);
   }
 
