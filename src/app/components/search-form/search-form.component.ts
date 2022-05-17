@@ -26,8 +26,8 @@ export class SearchFormComponent implements OnInit {
     });
     if (this.rovers.length === 0) {
       this.nasaService.getRovers()
-        .then((rovers: Rover[]) => { this.rovers = rovers })
-        .catch(console.error)
+        .then((rovers: Rover[]) => { this.rovers = rovers; })
+        .catch(console.error);
     }
   }
 
