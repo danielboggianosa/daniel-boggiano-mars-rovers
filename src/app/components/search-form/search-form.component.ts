@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Photo } from 'src/app/core/models/Photo';
 import { Rover } from 'src/app/core/models/Rover';
 import { NasaService } from 'src/app/core/services/nasa.service';
@@ -25,14 +25,9 @@ export class SearchFormComponent implements OnInit {
       sol: new FormControl(this.maxSol, [Validators.required, Validators.min(0), Validators.max(this.maxSol)]),
     });
     if (this.rovers.length === 0) {
-      this.nasaService.getRovers().subscribe(
-        (data: { rovers: Rover[] }) => {
-          this.rovers = data.rovers;
-        },
-        error => {
-          console.error(error);
-        }
-      );
+      this.nasaService.getRovers()
+        .then((rovers: Rover[]) => { this.rovers = rovers })
+        .catch(console.error)
     }
   }
 
